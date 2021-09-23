@@ -1,17 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './WorldMap.css';
 import mapData from './../data/countries.json';
 import { MapContainer, GeoJSON } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import { Link } from 'react-router-dom';
 
-export default function WorldMap () {
-
-const [countrySelected, SetSelectedCountry] = useState('Select or Search')
+export default function WorldMap ({countrySelected, SetSelectedCountry}) {
 
 console.log(mapData);
-
-// let countrySelected = "Select or Search";
 
 // map styling
 const countryStyle = {
