@@ -1,6 +1,7 @@
 import React from 'react';
 import './CountryPage.css';
 import { Link } from 'react-router-dom';
+import foodData from './../data/food.json';
 
 export default function CountryPage () {
     return (
