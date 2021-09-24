@@ -4,10 +4,17 @@ import mapData from './../data/countries.json';
 import { MapContainer, GeoJSON } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import { Link } from 'react-router-dom';
+import Navbar from './Navbar'
 
 export default function WorldMap ({countrySelected, SetSelectedCountry}) {
 
 console.log(mapData);
+
+// ------------ maybe search auto completes, and the on submit is for the country profile page instead
+// search function
+const onSearchSelect = () => {
+
+}
 
 // map styling
 const countryStyle = {
@@ -27,10 +34,9 @@ const onCountryClick = (event) => {
 // list selected country
 const writeCountryName = (event) => {
     SetSelectedCountry(event.target.feature.properties.ADMIN);
-
 }
 
-// pop up produced following every country click with it's info
+// Pop up produced following every country click with it's info
 const onEachCountry = (country, layer) => {
     const countryName = country.properties.ADMIN;
     //pop-up country name when clicked
@@ -52,31 +58,28 @@ const onEachCountry = (country, layer) => {
             <div className="map-search-container">
                 <h2 className="instructions" >Select a country and view their food</h2>
 
-                <MapContainer style={{ height: "60vh" }} zoom={1.5} center={[20, 100]} >
+                <MapContainer style={{ height: "50vh" }} zoom={1.5} center={[20, 100]} >
                     <GeoJSON style={countryStyle} data={mapData.features} onEachFeature={onEachCountry} />
                 </MapContainer>
 
                 <h2 className="select-country">{countrySelected + "!"}</h2>
-                <form >
-                    <input type="text"  />
-                    <button type="submit" >Search</button>
-                </form>
+                
+                <div className="buttons">
+                    <form >
+                        <input type="text"  />
+                        <button type="submit" >Search</button>
+                    </form>
 
-                <Link to="/countrypage">
-                    <button>View Their Food!</button>
-                </Link>
+                    <div>
+                        <button className="random-button" >Random!</button>
+                    </div>
 
-                <div className="nav-bar">
-                    <Link to="/">
-                        <div className="home">Home</div>
-                    </Link>
                     <Link to="/countrypage">
-                        <div className="countrypage">Country</div>
-                    </Link>
-                    <Link to="/dishinfo">
-                        <div className="food">Food</div>
+                        <button className="view=button" >View Their Food!</button>
                     </Link>
                 </div>
+
+                <Navbar/>
 
             </div>
 

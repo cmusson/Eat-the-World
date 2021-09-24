@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import './CountryPage.css';
 import { Link } from 'react-router-dom';
 import './Dish.css';
 
@@ -34,7 +33,6 @@ export default function CountryPage ({ dishSelected }) {
         }).then(res => res.json())
         .then(res => 
             // console.log("RES:",res)
-            
             setDishInfo(res.imgLink.replace( /(<([^>]+)>)/ig, ''))
         );
     }
@@ -48,12 +46,24 @@ export default function CountryPage ({ dishSelected }) {
                 <img src={dishImg} alt={dishSelected} />
             </div>
 
-            {/* <div>Add to Favorites</div> */}
+            <div className="info-container">
 
-            <h2>About {dishSelected}</h2>
+                {/* <div>Add to Favorites</div> */}
 
-            <div>
-                <p>{dishInfo}</p>
+                <h2>About {dishSelected}</h2>
+
+                <div>
+                    <p>{dishInfo}</p>
+                </div>
+
+                <div>
+                    <h3>Recipes</h3>
+                </div>
+
+                <div>
+                    <h3>Nearby Restaurants</h3>
+                </div>
+
             </div>
 
             <div className="nav-bar">

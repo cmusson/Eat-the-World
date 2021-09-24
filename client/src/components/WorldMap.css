@@ -9,6 +9,7 @@ h1 {
     border-radius: 2rem;
     padding: 0.1%;
     width: 90vw;
+    height:50vh;
 }
 
 .map-search-container {
@@ -22,6 +23,7 @@ h1 {
 }
 
 .nav-bar {
+    background-color: rgb(152, 181, 235);
     display: flex;
     align-items:center;
     justify-content: space-between;
@@ -29,6 +31,21 @@ h1 {
     position:fixed;
     bottom:0;
     padding:1rem;
+}
+
+.buttons {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.view-button {
+    margin: 1rem;
+}
+
+.random-button {
+    margin: 1rem;
 }
 
 
