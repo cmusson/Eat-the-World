@@ -1,68 +1,59 @@
 import React, { useState, useEffect } from 'react';
 import './CountryPage.css';
 import { Link } from 'react-router-dom';
+import './Dish.css';
 
-export default function CountryPage (dishSelected) {
-    // const [dishImg, setDishImg] = useState('');
+export default function CountryPage ({ dishSelected }) {
+    const [dishImg, setDishImg] = useState('');
+    const [dishInfo, setDishInfo] = useState('');
+    // console.log(dishImg);
 
-    // useEffect( () => { getDishImage() },[]);
-
-    // const imgUrl = "http://en.wikipedia.org/w/api.php?action=query&origin=*&prop=pageimages&format=json&piprop=original&titles=" + dishSelected.dishSelected;
+    useEffect( () => { getDishImage() },[]);
+    useEffect( () => { getDishInfo() },[]);
     
     // console.log ("THE DISH:", dishSelected);
     // console.log("URL:", imgUrl);
 
+    function getDishImage () {
+        fetch("http://localhost:3002/image", {
+          method:"POST",
+          headers: {"content-type":"application/json"},
+          body: JSON.stringify({ dish: dishSelected })
+        }).then(res => res.json())
+        .then(res => 
+            // console.log("RES:",res)
+        setDishImg(res.imgLink)
+        );
+    }
 
+    function getDishInfo () {
+        fetch("http://localhost:3002/info", {
+          method:"POST",
+          headers: {"content-type":"application/json"},
+          body: JSON.stringify({ dish: dishSelected })
+        }).then(res => res.json())
+        .then(res => 
+            // console.log("RES:",res)
+            
+            setDishInfo(res.imgLink.replace( /(<([^>]+)>)/ig, ''))
+        );
+    }
 
-
-
-
-    // function getDishImage () {
-    //     fetch(imgUrl, { mode: 'cors' }) //no-cors makes it opaque
-    //       .then(res => {
-    //         console.log(res);
-    //         return res.json();       
-    //       })
-    //       .then((data) => {
-    //           console.log("data",data);
-    //         setDishImg(data);
-    //       })
-    //       .catch(err => {
-    //           console.log(err);
-    //       })
-    //   }
-
-
-
-
-
-
-
-
-    // function getDishInfo () {
-    //     fetch()
-    //       .then(res => {
-    //         return res.json();
-    //       })
-    //       .then((data) => {
-    //         setEvents(data);
-    //       })
-    //   }
 
     return (
         <div>
-            <h1>Feijoada</h1>
+            <h1>{dishSelected}</h1>
 
-            <div>
-                {/* <img src={dishImg} alt={dishSelected} /> */}
+            <div className="pic-div">
+                <img src={dishImg} alt={dishSelected} />
             </div>
 
-            <div>Add to Favorites</div>
+            {/* <div>Add to Favorites</div> */}
 
-            <h2>About Feijoada</h2>
+            <h2>About {dishSelected}</h2>
 
             <div>
-                <p>Feijoada is an awesome dish</p>
+                <p>{dishInfo}</p>
             </div>
 
             <div className="nav-bar">
