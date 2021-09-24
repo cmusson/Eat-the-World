@@ -1,23 +1,30 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import './CountryPage.css';
 import { Link } from 'react-router-dom';
 import foodData from './../data/food.json';
 
-export default function CountryPage ({countrySelected}) {
+export default function CountryPage ({countrySelected, SetSelectedDish}) {
 
-    console.log(foodData);
-
-
+// on click, change the dish selected to = {dish}
+const onDishClick = (event) => {
+    const dishElement = event.target.outerText
+    console.log("EVENT:", event.target.outerText);
+    console.log(dishElement);
+    SetSelectedDish(dishElement);
+};
 
     return (
         <div>
             <h1>{countrySelected}</h1>
             <h1>Local Delicacies</h1>
 
-            <div dish-list>
+            <div className="dish-list">
                 {foodData.map(val => {
-                    if(countrySelected === val.country)
-                    return <h3>{val.dish}</h3>
+                    if(countrySelected === val.country) {
+                        return val.dish.map(dish => {
+                            return <Link to="/dishinfo"><div className="dish-item" onClick={onDishClick} ><h3>{dish}</h3></div></Link>
+                        })    
+                    }
                 })}
             </div>
 

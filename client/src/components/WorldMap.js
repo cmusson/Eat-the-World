@@ -26,7 +26,6 @@ const onCountryClick = (event) => {
 
 // list selected country
 const writeCountryName = (event) => {
-    // console.log(event.target.feature.properties.ADMIN);
     SetSelectedCountry(event.target.feature.properties.ADMIN);
 
 }
@@ -34,7 +33,6 @@ const writeCountryName = (event) => {
 // pop up produced following every country click with it's info
 const onEachCountry = (country, layer) => {
     const countryName = country.properties.ADMIN;
-    //console.log(countryName);
     //pop-up country name when clicked
     layer.bindPopup(countryName); 
     // change country color to blue when clicked 
@@ -52,13 +50,13 @@ const onEachCountry = (country, layer) => {
         <div>
             <h1>Eat the World</h1>
             <div className="map-search-container">
-                <h2 className="instructions" >Select a country and view their food!</h2>
+                <h2 className="instructions" >Select a country and view their food</h2>
 
                 <MapContainer style={{ height: "60vh" }} zoom={1.5} center={[20, 100]} >
                     <GeoJSON style={countryStyle} data={mapData.features} onEachFeature={onEachCountry} />
                 </MapContainer>
 
-                <h2 className="select-country">{countrySelected}</h2>
+                <h2 className="select-country">{countrySelected + "!"}</h2>
                 <form >
                     <input type="text"  />
                     <button type="submit" >Search</button>
