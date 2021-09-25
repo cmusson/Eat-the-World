@@ -1,13 +1,3 @@
-.nav-bar {
-    display: flex;
-    align-items:center;
-    justify-content: space-between;
-    width:90vw;
-    position:fixed;
-    bottom:0;
-    padding:1rem;
-}
-
 .pic-div {
     display:flex;
     /* object-fit: cover; */
@@ -20,6 +10,7 @@ img {
     margin:0 auto;
     width: 60vw;
     align-self: center;
+    border-radius: 0.5rem;
 }
 
 .info-container {

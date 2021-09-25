@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './WorldMap.css';
 import mapData from './../data/countries.json';
 import { MapContainer, GeoJSON } from 'react-leaflet';
@@ -8,12 +8,24 @@ import Navbar from './Navbar'
 
 export default function WorldMap ({countrySelected, SetSelectedCountry}) {
 
-console.log(mapData);
+    const [filteredCountries, SetFilteredCountries] = useState([]);
+
+// console.log(mapData.features);
 
 // ------------ maybe search auto completes, and the on submit is for the country profile page instead
-// search function
-const onSearchSelect = () => {
+const handleFilter = (event) => {
+    const searchInput = event.target.value;
+    const newFilter = mapData.features.filter((value) => {
+        return value.properties.ADMIN.toLowerCase().includes(searchInput.toLowerCase())
+    });
+    SetFilteredCountries(newFilter);
+}
 
+// select a random country 
+const randomCountry = () => {
+    const featuresArray = mapData.features;
+    const randomIndex = Math.floor(Math.random() * featuresArray.length);
+    SetSelectedCountry(featuresArray[randomIndex].properties.ADMIN);
 }
 
 // map styling
@@ -65,18 +77,34 @@ const onEachCountry = (country, layer) => {
                 <h2 className="select-country">{countrySelected + "!"}</h2>
                 
                 <div className="buttons">
-                    <form >
-                        <input type="text"  />
-                        <button type="submit" >Search</button>
-                    </form>
+
+                    <div className="search">
+                        <div className="searchInputs">
+                            <input type="text" placeholder="Search" onChange={handleFilter} />
+                        </div>
+
+                        { filteredCountries.length !== 0 && (
+                        <div className="countryResult">
+                            {filteredCountries.slice(0,10).map((country) => {
+                                return <div className="countrySuggestion" onClick={() => {
+                                    SetSelectedCountry(country.properties.ADMIN);
+                                    SetFilteredCountries([]);
+                                    
+                                }} >{country.properties.ADMIN}</div>
+                            })}
+                        </div>
+                        )}
+
+                    </div>
 
                     <div>
-                        <button className="random-button" >Random!</button>
+                        <button className="random-button" onClick={randomCountry} >Random!</button>
                     </div>
 
                     <Link to="/countrypage">
                         <button className="view=button" >View Their Food!</button>
                     </Link>
+
                 </div>
 
                 <Navbar/>

@@ -1,0 +1,9 @@
+.nav-bar {
+    display: flex;
+    align-items:center;
+    justify-content: space-between;
+    width:90vw;
+    position:fixed;
+    bottom:0;
+    padding:1rem;
+}

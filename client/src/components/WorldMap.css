@@ -22,17 +22,6 @@ h1 {
     text-align: center;
 }
 
-.nav-bar {
-    background-color: rgb(152, 181, 235);
-    display: flex;
-    align-items:center;
-    justify-content: space-between;
-    width:90vw;
-    position:fixed;
-    bottom:0;
-    padding:1rem;
-}
-
 .buttons {
     display:flex;
     flex-direction: column;
@@ -48,7 +37,17 @@ h1 {
     margin: 1rem;
 }
 
+.countryResult {
+    background-color: white;
+    height: 8vh;
+    width: 70vw;
+    overflow: hidden;
+    overflow-y: auto;
+}
 
+.countryResult::-webkit-scrollbar {
+    display: none;
+}
 
 
 
