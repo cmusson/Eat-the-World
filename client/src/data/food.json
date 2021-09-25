@@ -140,7 +140,7 @@
     {"country" : "Turkmenistan", "dish" : ["Palaw"]},
     {"country" : "Uganda", "dish" : ["Matoke"]},
     {"country" : "Ukraine", "dish" : ["Borscht", "Varenyky"]},
-    {"country" : "United Kingdom", "dish" : ["Fish and chips",  "Chicken tikka masala", "Sunday roast", "Haggis", "cornish pasty", "Cawl"]},
+    {"country" : "United Kingdom", "dish" : ["Fish and chips",  "Chicken tikka masala", "Sunday roast", "Haggis", "Cornish pasty", "Cawl"]},
     {"country" : "United States of America", "dish" : ["Hamburger", "Hot dog", "Fried chicken", "Buffalo wings", "Apple pie"]},
     {"country" : "Uruguay", "dish" : ["Asado", "Chivito"]},
     {"country" : "Uzbekistan", "dish" : ["O'sh"]},

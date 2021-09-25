@@ -2,6 +2,7 @@ import React from 'react';
 import './CountryPage.css';
 import { Link } from 'react-router-dom';
 import foodData from './../data/food.json';
+import Navbar from './Navbar'
 
 export default function CountryPage ({countrySelected, SetSelectedDish}) {
 
@@ -22,23 +23,13 @@ const onDishClick = (event) => {
                 {foodData.map(val => {
                     if(countrySelected === val.country) {
                         return val.dish.map(dish => {
-                            return <Link to="/dishinfo"><div className="dish-item" onClick={onDishClick} ><h3>{dish}</h3></div></Link>
+                            return <Link to="/dishinfo" key={dish}><div className="dish-item" onClick={onDishClick} >{dish}</div></Link>
                         })    
                     }
                 })}
             </div>
 
-            <div className="nav-bar">
-                    <Link to="/">
-                        <div className="home">Home</div>
-                    </Link>
-                    <Link to="/countrypage">
-                        <div className="countrypage">Country</div>
-                    </Link>
-                    <Link to="/dishinfo">
-                        <div className="food">Food</div>
-                    </Link>
-                </div>
+            <Navbar/>
 
         </div>
     );

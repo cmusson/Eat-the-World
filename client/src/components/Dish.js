@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Dish.css';
+import Navbar from './Navbar'
+import RestaurantMap from './RestaurantMap';
 
 export default function CountryPage ({ dishSelected }) {
     const [dishImg, setDishImg] = useState('');
@@ -62,21 +64,12 @@ export default function CountryPage ({ dishSelected }) {
 
                 <div>
                     <h3>Nearby Restaurants</h3>
+                    <RestaurantMap/>
                 </div>
 
             </div>
 
-            <div className="nav-bar">
-                <Link to="/">
-                    <div className="home">Home</div>
-                </Link>
-                <Link to="/countrypage">
-                    <div className="countrypage">Country</div>
-                </Link>
-                <Link to="/dishinfo">
-                    <div className="food">Food</div>
-                </Link>
-            </div>
+            <Navbar/>
 
         </div>
     );

@@ -34,7 +34,7 @@ exports.getFoodImage = async (req, res) => {
 // post request that does an api request for the dish img url
 exports.getFoodInfo = async (req, res) => {
     try {
-      console.log("ignore:",req.body.dish)
+      // console.log("ignore:",req.body.dish)
       const dish = req.body.dish;  
       const imgUrl = await axios.get("http://en.wikipedia.org/w/api.php?action=query&origin=*&prop=extracts&format=json&exintro=&titles=" + dish).catch(error => {console.log(error);})
       
