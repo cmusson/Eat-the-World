@@ -1,9 +1,24 @@
+html {
+    box-sizing: border-box;
+  }
+
 .nav-bar {
     display: flex;
     align-items:center;
     justify-content: space-between;
-    width:90vw;
     position:fixed;
     bottom:0;
-    padding:1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    /* background-color:burlywood; */
+    background-color: rgb(241, 166, 153);
+    width: 100vw;
+}
+
+.food {
+    padding-right: 1rem;
+}
+
+.home {
+    padding-left: 1rem;
 }

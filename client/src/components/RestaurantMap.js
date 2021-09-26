@@ -8,8 +8,6 @@ const mapContainerStyle = {
     height: "30vh",
 }
 
-console.log(process.env.REACT_APP_GOOGLE_MAPS_API_KEY)
-
 const center = {
     lat: 43.653225,
     lng: -79.383186,

@@ -9,10 +9,11 @@ import Navbar from './Navbar'
 export default function WorldMap ({countrySelected, SetSelectedCountry}) {
 
     const [filteredCountries, SetFilteredCountries] = useState([]);
+    
 
 // console.log(mapData.features);
 
-// ------------ maybe search auto completes, and the on submit is for the country profile page instead
+// filters list of countries
 const handleFilter = (event) => {
     const searchInput = event.target.value;
     const newFilter = mapData.features.filter((value) => {
@@ -26,6 +27,10 @@ const randomCountry = () => {
     const featuresArray = mapData.features;
     const randomIndex = Math.floor(Math.random() * featuresArray.length);
     SetSelectedCountry(featuresArray[randomIndex].properties.ADMIN);
+}
+
+const clearSearchInput = () => {
+    // const [wordEntered, SetWordEntered] = useState("");
 }
 
 // map styling
@@ -65,22 +70,24 @@ const onEachCountry = (country, layer) => {
 
     
         return (
-        <div>
+        <div className="home-container">
             <h1>Eat the World</h1>
             <div className="map-search-container">
                 <h2 className="instructions" >Select a country and view their food</h2>
 
-                <MapContainer style={{ height: "50vh" }} zoom={1.5} center={[20, 100]} >
+                <MapContainer style={{ height: "45vh" }} zoom={1.5} center={[10, 100]} >
                     <GeoJSON style={countryStyle} data={mapData.features} onEachFeature={onEachCountry} />
                 </MapContainer>
 
+                <div className="select-country">
                 <h2 className="select-country">{countrySelected + "!"}</h2>
-                
+                </div>
+
                 <div className="buttons">
 
                     <div className="search">
                         <div className="searchInputs">
-                            <input type="text" placeholder="Search" onChange={handleFilter} />
+                            <input className="search-box" type="text" placeholder="Search countries..."  onChange={handleFilter} />
                         </div>
 
                         { filteredCountries.length !== 0 && (
@@ -89,7 +96,7 @@ const onEachCountry = (country, layer) => {
                                 return <div className="countrySuggestion" onClick={() => {
                                     SetSelectedCountry(country.properties.ADMIN);
                                     SetFilteredCountries([]);
-                                    
+                                    clearSearchInput();
                                 }} >{country.properties.ADMIN}</div>
                             })}
                         </div>
@@ -101,15 +108,15 @@ const onEachCountry = (country, layer) => {
                         <button className="random-button" onClick={randomCountry} >Random!</button>
                     </div>
 
-                    <Link to="/countrypage">
-                        <button className="view=button" >View Their Food!</button>
+                    <Link to="/countrypage" className="view-button">
+                        <button className="view-button" >View Their Food!</button>
                     </Link>
 
                 </div>
 
-                <Navbar/>
-
             </div>
+
+            <Navbar/>
 
         </div>
         );

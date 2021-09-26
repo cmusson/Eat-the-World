@@ -40,7 +40,8 @@
     "not op_mini all"
   ],
   "react-dotenv": {
-    "whitelist": ["REACT_APP_GOOGLE_MAPS_API_KEY"]
+    "whitelist": [
+      "REACT_APP_GOOGLE_MAPS_API_KEY"
+    ]
   }
 }
-

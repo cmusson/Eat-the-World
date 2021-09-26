@@ -1,9 +1,13 @@
+html {
+    box-sizing: border-box;
+  }
+
 .pic-div {
     display:flex;
     /* object-fit: cover; */
     /* align-items: center; */
     justify-content: center;
-    margin: 0;
+    margin: 1rem;
 }
 
 img {
@@ -11,14 +15,48 @@ img {
     width: 60vw;
     align-self: center;
     border-radius: 0.5rem;
+    opacity: 0.9;
 }
 
 .info-container {
     display:flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 8vh;
 }
 
 p {
-    margin: 1rem;
+    line-height: 120%;
+    padding-left:0.5rem;
+    padding-right: 0.5rem;
+    font-weight: 600;
 }
+
+.dish-info{
+    border-radius: 1rem;
+    border-color: darkgray;
+    width: 80vw;
+    background-color: white;
+    opacity: 0.9;
+    margin-top: 1rem;
+}
+
+h2 {
+    text-align: center;
+    
+}
+
+h1 {
+    margin-top: 3rem;
+    background-color: white;
+    opacity:0.8;
+    width:80vw;
+    border-radius: 1rem;
+}
+
+.dish-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+

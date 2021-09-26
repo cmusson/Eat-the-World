@@ -41,7 +41,7 @@ export default function CountryPage ({ dishSelected }) {
 
 
     return (
-        <div>
+        <div className="dish-main">
             <h1>{dishSelected}</h1>
 
             <div className="pic-div">
@@ -52,18 +52,19 @@ export default function CountryPage ({ dishSelected }) {
 
                 {/* <div>Add to Favorites</div> */}
 
-                <h2>About {dishSelected}</h2>
+                
 
-                <div>
+                <div className="dish-info" >
+                <h2>About {dishSelected}</h2>
                     <p>{dishInfo}</p>
                 </div>
 
                 <div>
-                    <h3>Recipes</h3>
+                    <h2>Recipes</h2>
                 </div>
 
                 <div>
-                    <h3>Nearby Restaurants</h3>
+                    <h2>Nearby Restaurants</h2>
                     <RestaurantMap/>
                 </div>
 
