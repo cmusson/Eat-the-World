@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import './Dish.css';
 import Navbar from './Navbar'
 import RestaurantMap from './RestaurantMap';
@@ -59,8 +58,10 @@ export default function CountryPage ({ dishSelected }) {
                     <p>{dishInfo}</p>
                 </div>
 
-                <div>
+                <div className="recipes">
                     <h2>Recipes</h2>
+                    <a className="recipe-link" href="https://www.allrecipes.com/search/results/?search={dishSelected}" >https://www.allrecipes.com/search/results/?search={dishSelected}</a>
+                    <a className="recipe-link" href="https://foodnetwork.co.uk/search/?q={dishSelected}" >hhttps://foodnetwork.co.uk/search/?q={dishSelected}</a>
                 </div>
 
                 <div>

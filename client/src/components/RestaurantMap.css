@@ -1,3 +1,7 @@
 html {
     box-sizing: border-box;
   }
+
+  GoogleMap {
+      border-radius: 1rem;
+  }

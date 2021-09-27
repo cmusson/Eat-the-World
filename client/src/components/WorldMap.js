@@ -9,7 +9,7 @@ import Navbar from './Navbar'
 export default function WorldMap ({countrySelected, SetSelectedCountry}) {
 
     const [filteredCountries, SetFilteredCountries] = useState([]);
-    
+    // const [wordEntered, SetWordEntered] = useState("");
 
 // console.log(mapData.features);
 
@@ -17,7 +17,7 @@ export default function WorldMap ({countrySelected, SetSelectedCountry}) {
 const handleFilter = (event) => {
     const searchInput = event.target.value;
     const newFilter = mapData.features.filter((value) => {
-        return value.properties.ADMIN.toLowerCase().includes(searchInput.toLowerCase())
+        return value.properties.ADMIN.toLowerCase().includes(searchInput.toLowerCase());
     });
     SetFilteredCountries(newFilter);
 }

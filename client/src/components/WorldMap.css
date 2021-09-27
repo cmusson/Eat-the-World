@@ -62,13 +62,19 @@ h1 {
 .countryResult {
     background-color: white;
     height: 8vh;
-    width: 70vw;
+    width: 60vw;
     overflow: hidden;
     overflow-y: auto;
+    border-radius: 0.5rem;
+    position:absolute;
+    z-index: 15;
+    opacity: 0.9;
+    margin-left: 0.5rem;
+    padding-left: 0.1rem;
 }
 
 .countryResult::-webkit-scrollbar {
-    display: none;
+    display: none; 
 }
 
 .search-box {
