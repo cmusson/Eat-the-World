@@ -30,8 +30,8 @@ export default function RestaurantMap () {
 //     navigator.geolocation.getCurrentPosition(success);
 //   })
 
-    const [lat, setLat] = useState(null);
-    const [lng, setLng] = useState(null);
+    const [lat, setLat] = useState(41.38);
+    const [lng, setLng] = useState(2.16);
     const [status, setStatus] = useState(null);
 
     useEffect( () => { getLocation() },[]);
@@ -62,27 +62,25 @@ export default function RestaurantMap () {
     if (loadError) return "Error loading maps";
     if (!isLoaded) return "Loading Maps";
 
-    const center = {
-        lat: 41.38,
-        lng: 2.16,
-    }
-
-    // position={{ lat: {lat}, lng: {lng} }}
+    // const center = {
+    //     lat: 41.38,
+    //     lng: 2.16,
+    // }
 
     return (
             <div>
-                <div className="location">
-                <button onClick={getLocation}>Get Location</button>
-                <h1>Coordinates</h1>
-                <p>{status}</p>
-                {lat && <p>Latitude: {lat}</p>}
-                {lng && <p>Longitude: {lng}</p>}
-                </div>
-
-                <GoogleMap mapContainerStyle={mapContainerStyle} zoom={10} center={center} >
-                <Marker />
+                <GoogleMap mapContainerStyle={mapContainerStyle} zoom={10} center={{ lat, lng }} >
+                <Marker position={{ lat, lng }}/>
                 </GoogleMap>
             </div>
     );
 
 }
+
+{/* <div className="location">
+                <button onClick={getLocation}>Get Location</button>
+                <h1>Coordinates</h1>
+                <p>{status}</p>
+                {lat && <p>Latitude: {lat}</p>}
+                {lng && <p>Longitude: {lng}</p>}
+                </div> */}
