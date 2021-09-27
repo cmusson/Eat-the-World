@@ -16,6 +16,7 @@ img {
     align-self: center;
     border-radius: 0.5rem;
     opacity: 0.9;
+    max-height: 30vh;
 }
 
 .info-container {
@@ -40,20 +41,13 @@ p {
     opacity: 0.9;
     margin-top: 1rem;
     overflow-y: auto;
-    height: 43.5vh;
+    height: fit-content;
+    max-height: 43.5vh;
 }
 
 h2 {
     text-align: center;
     
-}
-
-h1 {
-    margin-top: 3rem;
-    background-color: white;
-    opacity:0.8;
-    width:80vw;
-    border-radius: 1rem;
 }
 
 .dish-main {

@@ -35,44 +35,49 @@ export default function CountryPage ({ dishSelected }) {
         .then(res => 
             // console.log("RES:",res)
             setDishInfo(res.imgLink.replace( /(<([^>]+)>)/ig, ''))
-        );
+        ).catch((err) => console.log(err));
     }
 
 
     return (
         <div className="dish-main">
+        
             <h1>{dishSelected}</h1>
 
             <div className="pic-div">
                 <img src={dishImg} alt={dishSelected} />
             </div>
 
+            {dishSelected.length > 0 && 
             <div className="info-container">
 
-                {/* <div>Add to Favorites</div> */}
-
-                
+                <div><h2>Add to Favorites</h2></div>
 
                 <div className="dish-info" >
                 <h2>About {dishSelected}</h2>
                     <p>{dishInfo}</p>
                 </div>
 
+                
                 <div className="recipes">
                     <h2>Recipes</h2>
-                    <a className="recipe-link" href="https://www.allrecipes.com/search/results/?search={dishSelected}" >https://www.allrecipes.com/search/results/?search={dishSelected}</a>
-                    <a className="recipe-link" href="https://foodnetwork.co.uk/search/?q={dishSelected}" >hhttps://foodnetwork.co.uk/search/?q={dishSelected}</a>
+                    
+                    <a className="recipe-link" href="https://www.allrecipes.com/search/results/?search={dishSelected}" >https://www.allrecipes.com/search/results/?search={dishSelected.replace(/\s/g,'+')}</a>
+                    <a className="recipe-link" href="https://foodnetwork.co.uk/search/?q={dishSelected}" >https://foodnetwork.co.uk/search/?q={dishSelected.replace(/\s/g,'+')}</a>
+                    
                 </div>
+                
 
                 <div>
                     <h2>Nearby Restaurants</h2>
                     <RestaurantMap/>
                 </div>
-
+                
             </div>
+            }
 
             <Navbar/>
-
+            
         </div>
     );
 

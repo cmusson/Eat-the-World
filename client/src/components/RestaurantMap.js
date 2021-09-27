@@ -1,6 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import { GoogleMap, useLoadScript, Marker, InfoWindow, } from '@react-google-maps/api'
 import './RestaurantMap.css';
+// import Autocomplete from "react-google-autocomplete";
+// import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
+// import usePlacesAutocomplete, { getGeocode, getLatLng } from 'use-places-autocomplete';
+// import {Combobox, ComboboxInput, ComboboxPopover, ComboboxList, ComboboxOption } from '@reach/combobox'
+
 
 const libraries = ["places"];
 const mapContainerStyle = {
@@ -15,44 +20,53 @@ const mapContainerStyle = {
 
 export default function RestaurantMap () {
 
-    // const [ currentPosition, setCurrentPosition ] = useState({});
+    const [ currentPosition, setCurrentPosition ] = useState({});
   
-//     const success = position => {
-//     const currentPosition = {
-//       lat: position.coords.latitude,
-//       lng: position.coords.longitude
-//     }
-//     setCurrentPosition(currentPosition)
-//     console.log(currentPosition);;
-//   };
+    const success = position => {
+    const currentPosition = {
+      lat: position.coords.latitude,
+      lng: position.coords.longitude
+    }
+    setCurrentPosition(currentPosition)
+    console.log(currentPosition);;
+  };
   
-//   useEffect(() => {
-//     navigator.geolocation.getCurrentPosition(success);
-//   })
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(success);
+  })
 
     const [lat, setLat] = useState(41.38);
     const [lng, setLng] = useState(2.16);
     const [status, setStatus] = useState(null);
 
-    useEffect( () => { getLocation() },[]);
+    useEffect( () => {
+        getLocation();
+    },[]);
 
     const getLocation = () => {
-        console.log(navigator.geolocation);
-        if (!navigator.geolocation) {
-          setStatus('Geolocation is not supported by your browser');
-        } else {
-          setStatus('Locating...');
+        
           navigator.geolocation.getCurrentPosition((position) => {
-            setStatus(null);
+            
             setLat(position.coords.latitude);
             setLng(position.coords.longitude);
-            console.log("LAT",lat);
-            console.log("LNG",lng);
-          }, () => {
-            setStatus('Unable to retrieve your location');
-          });
-        }
+          });   
       }
+
+    // const getLocation = () => {
+    //     // console.log(navigator.geolocation);
+    //     if (!navigator.geolocation) {
+    //       setStatus('Geolocation is not supported by your browser');
+    //     } else {
+    //       setStatus('Locating...');
+    //       navigator.geolocation.getCurrentPosition((position) => {
+    //         setStatus(null);
+    //         setLat(position.coords.latitude);
+    //         setLng(position.coords.longitude);
+    //       }, () => {
+    //         setStatus('Unable to retrieve your location');
+    //       });
+    //     }
+    //   }
 
     const {isLoaded, loadError} = useLoadScript({
         googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
@@ -69,13 +83,55 @@ export default function RestaurantMap () {
 
     return (
             <div>
-                <GoogleMap mapContainerStyle={mapContainerStyle} zoom={10} center={{ lat, lng }} >
+                {/* <Search /> */}
+                <GoogleMap mapContainerStyle={mapContainerStyle} zoom={13} center={{ lat, lng }} >
                 <Marker position={{ lat, lng }}/>
                 </GoogleMap>
             </div>
     );
 
 }
+
+
+
+// function Search() {
+//     const {ready, value, suggestions: {status, data}, setValue, clearSuggestions,} = usePlacesAutocomplete({
+//         requestOptions: {
+//             types: ['restaurants'],
+//             location: { lat: () => 41.38, lng: () => 2.16 },
+//             radius: 500,
+//         }
+//     })
+//     // console.log("ready: ",ready);
+//     console.log("value: ",value);
+//     console.log("setVal: ",setValue); //sets value based on input
+//     console.log("clearSug: ",clearSuggestions); //clears suggested
+//     console.log("usePlacesAuto: ",usePlacesAutocomplete()); 
+
+
+//     return (
+//     // <Combobox onSelect={(address) => {console.log(address)}}>
+//     //     <ComboboxInput value={value} onChange={(e) => {
+//     //         setValue(e.target.value);
+//     //     }}
+//     //     disabled={!ready}
+//     //     placeholder="Search..." />
+//     //     <ComboboxPopover>
+//     //         {status === "OK" && data.map(({id, description}) => (
+//     //             <ComboboxOption key={id} value={description} />
+//     //         ))}
+//     //     </ComboboxPopover>
+//     // </Combobox>
+//     // <Autocomplete
+//     //   apiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}
+//     //   onPlaceSelected={(place) => console.log(place)}
+//     // //   options={{ types: ['restaurant']}}
+//     // />
+//     <GooglePlacesAutocomplete 
+//       apiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}
+//       />
+//     );
+// }
 
 {/* <div className="location">
                 <button onClick={getLocation}>Get Location</button>

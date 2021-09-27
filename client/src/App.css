@@ -8,6 +8,7 @@ html {
   padding: 0.5rem;
   display:flex;
   justify-content: space-evenly;
+  
 }
 
 body {
@@ -20,6 +21,7 @@ body {
   position:fixed;
   width:100%;
   z-index: 10;
+  top:0;
 }
 
 .page-container {

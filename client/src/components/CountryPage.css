@@ -8,11 +8,13 @@ html {
     border-radius: 1rem;
     margin:1rem;
     padding-left:0.5rem;
+    padding-right: 0.5rem;
     display:flex;
     align-items: center;
     background-color: white;
     opacity:0.9;
-    width: 90vw;
+    width:80vw;
+    justify-content: space-between;
 }
 
 .link {
@@ -29,3 +31,7 @@ h3 {
     flex-direction: column;
     align-items: center;
 }
+
+/* .favorites-selector {
+    
+} */

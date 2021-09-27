@@ -13,6 +13,7 @@ html {
     /* background-color:burlywood; */
     background-color: rgb(241, 166, 153);
     width: 100vw;
+    z-index:15;
 }
 
 .food {

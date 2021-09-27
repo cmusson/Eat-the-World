@@ -4,11 +4,20 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import WorldMap from './components/WorldMap.js';
 import CountryPage from './components/CountryPage.js';
 import Dish from './components/Dish.js';
+import Favorites from './components/Favorites';
 
 function App() {
   const [countrySelected, SetSelectedCountry] = useState('Select or Search');
-
   const [dishSelected, SetSelectedDish] = useState('');
+  const [favorites, SetFavorites] = useState(['Fish and chips', 'Kasha']);
+
+  function updateFavorites (fav) {
+    if (favorites.includes(fav)) {
+        SetFavorites(favorites.filter(el => el !== fav))
+    } else {
+        SetFavorites([...favorites, fav]);
+    }
+}
 
   return (
     <Router>
@@ -27,12 +36,14 @@ function App() {
       <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M11.342 10.892c.412-.514.725-.907.888-1.117.115-.148.132-.361.088-.543-.226-.836-.608-2.334.839-3.849 1.662-1.741 4.755-4.414 5.866-5.383l4.977 3.889c-.652 1.294-2.477 4.957-3.741 6.994-1.152 1.858-2.726 1.813-3.622 1.785-.189.001-.38.079-.497.229-.248.317-.847 1.064-1.615 2.018l3.971 5.05c.849 1.085.656 2.66-.43 3.509-.427.333-.988.526-1.563.526-.702 0-1.425-.288-1.948-.957l-3.273-4.107c-1.574 1.949-2.959 3.694-3.237 4.051-.508.649-1.239 1.013-1.989 1.013-.511 0-1.03-.168-1.494-.531-1.24-.968-1.314-2.464-.457-3.56.4-.513 2.163-2.725 3.972-4.966l-.622-.776-2.006 1.568c-1.915-2.628-5.449-9.589-5.449-13.301 0-2.529 1.774-2.433 1.837-2.433.543 0 1.084.248 1.459.723.424.534 4.308 5.443 8.046 10.168m-3.542.469l8.331 10.451c.231.295.578.184.702.087l.001-.001c.217-.17.256-.484.086-.702 0 0-13.419-16.976-14.959-18.934-.07 1.426 1.185 5.668 4.002 10.534l1.837-1.435zm1.557 5.177l-3.613 4.521c-.173.222-.325.542.003.798.328.257.601.054.785-.182l3.466-4.339-.641-.798zm3.89-3.239l1.425-1.771c.359-.461.762-.856 1.771-.862.758-.004 1.475.197 2.118-.837 1.123-1.813 3.044-5.273 3.044-5.273l-.396-.31-3.053 3.96-.658-.514 2.981-4.016-.412-.322-3.187 3.854-.645-.503 3.078-3.939-.375-.294s-2.867 2.755-4.334 4.292c-.809.847-.449 1.513-.278 2.238.231.98-.086 1.453-.44 1.907l-1.276 1.586.637.804z" fill="#030405"/></svg>
       </div>
       </div>
-      <div>
+
+      <div className="page-container">
         
         <Switch>
           <Route exact path="/" ><WorldMap countrySelected={countrySelected} SetSelectedCountry={SetSelectedCountry} /></Route>
-          <Route path="/countrypage" ><CountryPage countrySelected={countrySelected} SetSelectedDish={SetSelectedDish} SetSelectedCountry={SetSelectedCountry} /></Route>
-          <Route path="/dishinfo" ><Dish dishSelected={dishSelected} SetSelectedDish={SetSelectedDish} /></Route>
+          <Route path="/countrypage" ><CountryPage countrySelected={countrySelected} SetSelectedDish={SetSelectedDish} SetSelectedCountry={SetSelectedCountry} favorites={favorites} SetFavorites={SetFavorites} updateFavorites={updateFavorites}/></Route>
+          <Route path="/dishinfo" ><Dish dishSelected={dishSelected} SetSelectedDish={SetSelectedDish} favorites={favorites} SetFavorites={SetFavorites} updateFavorites={updateFavorites} /></Route>
+          <Route path="/favorites"><Favorites favorites={favorites} SetFavorites={SetFavorites} updateFavorites={updateFavorites} /></Route>
         </Switch>
 
       </div>
