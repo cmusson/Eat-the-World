@@ -36,7 +36,7 @@ export default function CountryPage ({ dishSelected, favorites, updateFavorites 
         }).then(res => res.json())
         .then(res => 
             // console.log("RES:",res)
-            setDishInfo(res.imgLink.replace( /(<([^>]+)>)/ig, ''))
+            setDishInfo(res.imgLink.slice().replace( /(<([^>]+)>)/ig, ''))
         ).catch((err) => console.log(err));
     }
 
@@ -70,8 +70,8 @@ export default function CountryPage ({ dishSelected, favorites, updateFavorites 
                 <div className="recipes">
                     <h2>Recipes</h2>
                     
-                    <a className="recipe-link" href={`https://www.allrecipes.com/search/results/?search=${dishSelected}`} >https://www.allrecipes.com/search/results/?search={dishSelected.replace(/\s/g,'+')}</a>
-                    <a className="recipe-link" href={`https://foodnetwork.co.uk/search/?q=${dishSelected}`} >https://foodnetwork.co.uk/search/?q={dishSelected.replace(/\s/g,'+')}</a>
+                    <a className="recipe-link" href={`https://www.allrecipes.com/search/results/?search=${dishSelected.slice().replace(/\s/g,'+')}`} >https://www.allrecipes.com/search/results/?search={dishSelected.replace(/\s/g,'+')}</a>
+                    <a className="recipe-link" href={`https://foodnetwork.co.uk/search/?q=${dishSelected.slice().replace(/\s/g,'+')}`} >https://foodnetwork.co.uk/search/?q={dishSelected.replace(/\s/g,'+')}</a>
                     
                 </div>
                 

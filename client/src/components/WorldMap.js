@@ -78,7 +78,7 @@ const history = useHistory();
             <div className="map-search-container">
                 <h2 className="instructions" >Select a country and view their food</h2>
 
-                <MapContainer style={{ height: "45vh" }} zoom={1.5} center={[10, 100]} >
+                <MapContainer zoom={1.5} center={[41.38, 2.16]} >
                     <GeoJSON style={countryStyle} data={mapData.features} onEachFeature={onEachCountry} />
                 </MapContainer>
 

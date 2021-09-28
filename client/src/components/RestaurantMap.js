@@ -20,6 +20,7 @@ export default function RestaurantMap ({ dishSelected }) {
 
     const [ currentPosition, setCurrentPosition ] = useState({});
     const [restaurantSuggestions, SetRestaurantSuggestions] = useState([]);
+    const [selected, setSelected] = useState(null);
     // console.log("SUGGESTIONS FOR DA MAP: ", restaurantSuggestions);
   
     const success = position => {
@@ -102,29 +103,33 @@ export default function RestaurantMap ({ dishSelected }) {
             <div>
                 <GoogleMap mapContainerStyle={mapContainerStyle} zoom={12} center={{ lat, lng }} >
                 <Marker position={{ lat, lng }}/>
-                {restaurantSuggestions.slice(0,5).map(obj => {
-                  
+                {restaurantSuggestions.length > 0 &&
+                  restaurantSuggestions.slice(0,6).map(obj => {
+                  console.log(obj);
                   const markerLat = obj.geometry.location.lat;
                   const markerLng = obj.geometry.location.lng;
                   
-                  return <Marker position={{ lat: markerLat, lng: markerLng}} icon={{
-                    url: "https://iconmonstr.com/wp-content/g/gd/makefg.php?i=../assets/preview/2018/png/iconmonstr-eat-8.png&r=0&g=0&b=0", 
+                  return <Marker 
+                    position={{ lat: markerLat, lng: markerLng}} 
+                    icon={{ url: "https://iconmonstr.com/wp-content/g/gd/makefg.php?i=../assets/preview/2018/png/iconmonstr-eat-8.png&r=0&g=0&b=0", 
                     scaledSize: new window.google.maps.Size(20, 20),
                     origin: new window.google.maps.Point(0, 0),
-                    anchor: new window.google.maps.Point(15, 15),}} />
-                })}
-                </GoogleMap>
+                    anchor: new window.google.maps.Point(15, 15),
+                    }} 
+                    onClick={() => {
+                      setSelected(obj);
+                    }}    
+                  />
+              })}
 
-            </div>
+              {selected ? (<InfoWindow position={{lat:selected.geometry.location.lat, lng: selected.geometry.location.lng}}>
+                <div>
+                  <h5>{selected.name}</h5>
+                </div>
+              </InfoWindow>) : null}
+            </GoogleMap>
+          </div>
     );
 
 }
 
-
-{/* <div className="location">
-                <button onClick={getLocation}>Get Location</button>
-                <h1>Coordinates</h1>
-                <p>{status}</p>
-                {lat && <p>Latitude: {lat}</p>}
-                {lng && <p>Longitude: {lng}</p>}
-                </div> */}
