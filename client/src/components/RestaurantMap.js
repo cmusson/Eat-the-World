@@ -14,13 +14,13 @@ const mapContainerStyle = {
     radius: "1rem",
 }
 
-
-
 // 41.3874° N, 2.1686° E
 
-export default function RestaurantMap () {
+export default function RestaurantMap ({ dishSelected }) {
 
     const [ currentPosition, setCurrentPosition ] = useState({});
+    const [restaurantSuggestions, SetRestaurantSuggestions] = useState([]);
+    // console.log("SUGGESTIONS FOR DA MAP: ", restaurantSuggestions);
   
     const success = position => {
     const currentPosition = {
@@ -28,7 +28,7 @@ export default function RestaurantMap () {
       lng: position.coords.longitude
     }
     setCurrentPosition(currentPosition)
-    console.log(currentPosition);;
+    // console.log(currentPosition);;
   };
   
   useEffect(() => {
@@ -44,13 +44,29 @@ export default function RestaurantMap () {
     },[]);
 
     const getLocation = () => {
-        
           navigator.geolocation.getCurrentPosition((position) => {
-            
             setLat(position.coords.latitude);
             setLng(position.coords.longitude);
           });   
       }
+
+
+      useEffect( () => { getRestaurants() },[]);
+
+      // Get's restaurant data for map feature
+      function getRestaurants () {
+        fetch("http://localhost:3002/restaurants", {
+          method:"POST",
+          headers: {"content-type":"application/json"},
+          body: JSON.stringify({ cuisine: dishSelected })
+        }).then(res => res.json())
+        .then(res => 
+            // console.log("RES:",res.restaurants)
+            SetRestaurantSuggestions(res.restaurants)
+        ).catch(err => console.log(err));
+    }
+
+
 
     // const getLocation = () => {
     //     // console.log(navigator.geolocation);
@@ -81,57 +97,30 @@ export default function RestaurantMap () {
     //     lng: 2.16,
     // }
 
+    const iconUrl = 'https://iconmonstr.com/wp-content/g/gd/makefg.php?i=../assets/preview/2018/png/iconmonstr-eat-8.png&r=0&g=0&b=0';
+
     return (
             <div>
-                {/* <Search /> */}
-                <GoogleMap mapContainerStyle={mapContainerStyle} zoom={13} center={{ lat, lng }} >
+                <GoogleMap mapContainerStyle={mapContainerStyle} zoom={12} center={{ lat, lng }} >
                 <Marker position={{ lat, lng }}/>
+                {restaurantSuggestions.slice(0,5).map(obj => {
+                  
+                  const markerLat = obj.geometry.location.lat;
+                  const markerLng = obj.geometry.location.lng;
+                  
+                  return <Marker position={{ lat: markerLat, lng: markerLng}} icon={{
+                    url: "https://iconmonstr.com/wp-content/g/gd/makefg.php?i=../assets/preview/2018/png/iconmonstr-eat-8.png&r=0&g=0&b=0", 
+                    scaledSize: new window.google.maps.Size(20, 20),
+                    origin: new window.google.maps.Point(0, 0),
+                    anchor: new window.google.maps.Point(15, 15),}} />
+                })}
                 </GoogleMap>
+
             </div>
     );
 
 }
 
-
-
-// function Search() {
-//     const {ready, value, suggestions: {status, data}, setValue, clearSuggestions,} = usePlacesAutocomplete({
-//         requestOptions: {
-//             types: ['restaurants'],
-//             location: { lat: () => 41.38, lng: () => 2.16 },
-//             radius: 500,
-//         }
-//     })
-//     // console.log("ready: ",ready);
-//     console.log("value: ",value);
-//     console.log("setVal: ",setValue); //sets value based on input
-//     console.log("clearSug: ",clearSuggestions); //clears suggested
-//     console.log("usePlacesAuto: ",usePlacesAutocomplete()); 
-
-
-//     return (
-//     // <Combobox onSelect={(address) => {console.log(address)}}>
-//     //     <ComboboxInput value={value} onChange={(e) => {
-//     //         setValue(e.target.value);
-//     //     }}
-//     //     disabled={!ready}
-//     //     placeholder="Search..." />
-//     //     <ComboboxPopover>
-//     //         {status === "OK" && data.map(({id, description}) => (
-//     //             <ComboboxOption key={id} value={description} />
-//     //         ))}
-//     //     </ComboboxPopover>
-//     // </Combobox>
-//     // <Autocomplete
-//     //   apiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}
-//     //   onPlaceSelected={(place) => console.log(place)}
-//     // //   options={{ types: ['restaurant']}}
-//     // />
-//     <GooglePlacesAutocomplete 
-//       apiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}
-//       />
-//     );
-// }
 
 {/* <div className="location">
                 <button onClick={getLocation}>Get Location</button>

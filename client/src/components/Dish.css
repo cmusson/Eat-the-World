@@ -73,3 +73,18 @@ h2 {
     padding-bottom: 0.2rem;
 }
 
+.add-remove-favorite {
+    display:flex;
+    background-color: white;
+    opacity: 0.8;
+    border-radius: 1rem;
+    width:76vw;
+    align-items: center;
+    justify-content: space-between;
+    padding-left:0.5rem;
+    padding-right: 0.5rem;
+    padding-top: 0.1rem;
+    padding-bottom: 0.1rem;
+    font-size: larger;
+    font-weight: 700;
+}

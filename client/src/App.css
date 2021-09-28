@@ -12,7 +12,7 @@ html {
 }
 
 body {
-  background-image: url("https://images.summitmedia-digital.com/esquiremagph/images/2020/05/27/around-the-world-in-food-during-quarantine-main-image.jpg");
+  background-image: url("./data/phone-background.jpeg");
   opacity:0.9;
   
 }

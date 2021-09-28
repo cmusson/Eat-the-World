@@ -9,13 +9,14 @@ import Navbar from './Navbar'
 export default function WorldMap ({countrySelected, SetSelectedCountry}) {
 
     const [filteredCountries, SetFilteredCountries] = useState([]);
-    // const [wordEntered, SetWordEntered] = useState("");
+    const [wordEntered, SetWordEntered] = useState("");
 
 // console.log(mapData.features);
 
 // filters list of countries
 const handleFilter = (event) => {
     const searchInput = event.target.value;
+    SetWordEntered(searchInput);
     const newFilter = mapData.features.filter((value) => {
         return value.properties.ADMIN.toLowerCase().includes(searchInput.toLowerCase());
     });
@@ -30,7 +31,7 @@ const randomCountry = () => {
 }
 
 const clearSearchInput = () => {
-    // const [wordEntered, SetWordEntered] = useState("");
+    SetWordEntered('');
 }
 
 // map styling
@@ -87,7 +88,7 @@ const onEachCountry = (country, layer) => {
 
                     <div className="search">
                         <div className="searchInputs">
-                            <input className="search-box" type="text" placeholder="Search countries..."  onChange={handleFilter} />
+                            <input className="search-box" type="text" placeholder="Search countries..."  onChange={handleFilter} value={wordEntered}/>
                         </div>
 
                         { filteredCountries.length !== 0 && (
@@ -105,7 +106,7 @@ const onEachCountry = (country, layer) => {
                     </div>
 
                     <div>
-                        <button className="random-button" onClick={randomCountry} >Random!</button>
+                        <button className="random-button" onClick={() => {randomCountry();clearSearchInput();SetFilteredCountries([]);}} >Random!</button>
                     </div>
 
                     <Link to="/countrypage" className="view-button">

@@ -42,8 +42,8 @@ function App() {
         <Switch>
           <Route exact path="/" ><WorldMap countrySelected={countrySelected} SetSelectedCountry={SetSelectedCountry} /></Route>
           <Route path="/countrypage" ><CountryPage countrySelected={countrySelected} SetSelectedDish={SetSelectedDish} SetSelectedCountry={SetSelectedCountry} favorites={favorites} SetFavorites={SetFavorites} updateFavorites={updateFavorites}/></Route>
-          <Route path="/dishinfo" ><Dish dishSelected={dishSelected} SetSelectedDish={SetSelectedDish} favorites={favorites} SetFavorites={SetFavorites} updateFavorites={updateFavorites} /></Route>
-          <Route path="/favorites"><Favorites favorites={favorites} SetFavorites={SetFavorites} updateFavorites={updateFavorites} /></Route>
+          <Route path="/dishinfo" ><Dish dishSelected={dishSelected} SetSelectedDish={SetSelectedDish} favorites={favorites} SetFavorites={SetFavorites} updateFavorites={updateFavorites} countrySelected={countrySelected}/></Route>
+          <Route path="/favorites"><Favorites favorites={favorites} SetFavorites={SetFavorites} updateFavorites={updateFavorites} SetSelectedDish={SetSelectedDish} /></Route>
         </Switch>
 
       </div>
