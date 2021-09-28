@@ -3,7 +3,7 @@ import './WorldMap.css';
 import mapData from './../data/countries.json';
 import { MapContainer, GeoJSON } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import { Link } from 'react-router-dom';
+import { Link, useHistory} from 'react-router-dom';
 import Navbar from './Navbar'
 
 export default function WorldMap ({countrySelected, SetSelectedCountry}) {
@@ -69,6 +69,8 @@ const onEachCountry = (country, layer) => {
     })
 }
 
+const history = useHistory();
+
     
         return (
         <div className="home-container">
@@ -80,7 +82,7 @@ const onEachCountry = (country, layer) => {
                     <GeoJSON style={countryStyle} data={mapData.features} onEachFeature={onEachCountry} />
                 </MapContainer>
 
-                <div className="select-country">
+                <div onClick={() => history.push("/countrypage")} className="select-country">
                 <h2 className="select-country">{countrySelected + "!"}</h2>
                 </div>
 

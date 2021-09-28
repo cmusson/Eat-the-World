@@ -97,7 +97,6 @@ export default function RestaurantMap ({ dishSelected }) {
     //     lng: 2.16,
     // }
 
-    const iconUrl = 'https://iconmonstr.com/wp-content/g/gd/makefg.php?i=../assets/preview/2018/png/iconmonstr-eat-8.png&r=0&g=0&b=0';
 
     return (
             <div>
