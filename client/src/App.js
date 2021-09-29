@@ -9,7 +9,7 @@ import Favorites from './components/Favorites';
 function App() {
   const [countrySelected, SetSelectedCountry] = useState('Select or Search');
   const [dishSelected, SetSelectedDish] = useState('');
-  const [favorites, SetFavorites] = useState(['Fish and chips', 'Kasha']);
+  const [favorites, SetFavorites] = useState(['Fish and chips', 'Pizza']);
 
   function updateFavorites (fav) {
     if (favorites.includes(fav)) {
