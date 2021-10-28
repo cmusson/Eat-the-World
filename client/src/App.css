@@ -3,25 +3,22 @@ html {
 }
 
 .topbar {
-  /* background-color:burlywood; */
   background-color: rgb(241, 166, 153);
   padding: 0.5rem;
-  display:flex;
+  display: flex;
   justify-content: space-evenly;
-  
 }
 
 body {
   background-image: url("./data/phone-background.jpeg");
-  opacity:0.9;
-  
+  opacity: 0.9;
 }
 
 .topbar-container {
-  position:fixed;
-  width:100%;
+  position: fixed;
+  width: 100%;
   z-index: 10;
-  top:0;
+  top: 0;
 }
 
 .page-container {

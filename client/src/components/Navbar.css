@@ -1,25 +1,24 @@
 html {
-    box-sizing: border-box;
-  }
+  box-sizing: border-box;
+}
 
 .nav-bar {
-    display: flex;
-    align-items:center;
-    justify-content: space-between;
-    position:fixed;
-    bottom:0;
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
-    /* background-color:burlywood; */
-    background-color: rgb(241, 166, 153);
-    width: 100vw;
-    z-index:15;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  bottom: 0;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  background-color: rgb(241, 166, 153);
+  width: 100vw;
+  z-index: 15;
 }
 
 .food {
-    padding-right: 1rem;
+  padding-right: 1rem;
 }
 
 .home {
-    padding-left: 1rem;
+  padding-left: 1rem;
 }

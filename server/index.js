@@ -1,9 +1,8 @@
-const express = require('express');
+const express = require("express");
 const app = express();
-const cors = require('cors');
-const router = require('./router');
+const cors = require("cors");
+const router = require("./router");
 const PORT = 3002;
-
 
 //cors
 app.use(cors());
@@ -17,5 +16,5 @@ app.use(router);
 //listen
 app.listen(PORT, (err) => {
   if (err) return console.log(err);
-  console.log('Server is bloody running!');
+  console.log("Server is running!");
 });

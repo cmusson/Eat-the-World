@@ -1,90 +1,87 @@
 html {
-    box-sizing: border-box;
-  }
+  box-sizing: border-box;
+}
 
 .pic-div {
-    display:flex;
-    /* object-fit: cover; */
-    /* align-items: center; */
-    justify-content: center;
-    margin: 1rem;
+  display: flex;
+  justify-content: center;
+  margin: 1rem;
 }
 
 img {
-    margin:0 auto;
-    width: 60vw;
-    align-self: center;
-    border-radius: 0.5rem;
-    opacity: 0.9;
-    max-height: 30vh;
+  margin: 0 auto;
+  width: 60vw;
+  align-self: center;
+  border-radius: 0.5rem;
+  opacity: 0.9;
+  max-height: 30vh;
 }
 
 .info-container {
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 8vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 8vh;
 }
 
 p {
-    line-height: 120%;
-    padding-left:0.5rem;
-    padding-right: 0.5rem;
-    font-weight: 600;
+  line-height: 120%;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  font-weight: 600;
 }
 
-.dish-info{
-    border-radius: 1rem;
-    border-color: darkgray;
-    width: 80vw;
-    background-color: white;
-    opacity: 0.9;
-    margin-top: 1rem;
-    overflow-y: auto;
-    height: fit-content;
-    max-height: 43.5vh;
+.dish-info {
+  border-radius: 1rem;
+  border-color: darkgray;
+  width: 80vw;
+  background-color: white;
+  opacity: 0.9;
+  margin-top: 1rem;
+  overflow-y: auto;
+  height: fit-content;
+  max-height: 43.5vh;
 }
 
 h2 {
-    text-align: center;
-    
+  text-align: center;
 }
 
 .dish-main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .recipes {
-    display:flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .recipe-link {
-    width: 80vw;
-    background-color: white;
-    opacity: 0.9;
-    border-radius: 1rem;
-    margin:0.3rem;
-    text-align: center;
-    font-size:x-small;
-    padding-bottom: 0.2rem;
+  width: 80vw;
+  background-color: white;
+  opacity: 0.9;
+  border-radius: 1rem;
+  margin: 0.3rem;
+  text-align: center;
+  font-size: x-small;
+  padding-bottom: 0.2rem;
 }
 
 .add-remove-favorite {
-    display:flex;
-    background-color: white;
-    opacity: 0.8;
-    border-radius: 1rem;
-    width:76vw;
-    align-items: center;
-    justify-content: space-between;
-    padding-left:0.5rem;
-    padding-right: 0.5rem;
-    padding-top: 0.1rem;
-    padding-bottom: 0.1rem;
-    font-size: larger;
-    font-weight: 700;
+  display: flex;
+  background-color: white;
+  opacity: 0.8;
+  border-radius: 1rem;
+  width: 76vw;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 0.1rem;
+  padding-bottom: 0.1rem;
+  font-size: larger;
+  font-weight: 700;
 }

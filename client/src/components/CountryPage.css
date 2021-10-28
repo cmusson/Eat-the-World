@@ -1,38 +1,37 @@
 html {
-    box-sizing: border-box;
-  }
+  box-sizing: border-box;
+}
 
 .dish-item {
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
-    border-radius: 1rem;
-    margin:1rem;
-    padding-left:0.5rem;
-    padding-right: 0.5rem;
-    display:flex;
-    align-items: center;
-    background-color: white;
-    opacity:0.9;
-    width:80vw;
-    justify-content: space-between;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  border-radius: 1rem;
+  margin: 1rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  opacity: 0.9;
+  width: 80vw;
+  justify-content: space-between;
 }
 
 .link {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 h3 {
-    padding-left: 1rem;
+  padding-left: 1rem;
 }
 
-
 .country-page-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .food {
-    display:flex;
-    align-items:center;
+  display: flex;
+  align-items: center;
 }
