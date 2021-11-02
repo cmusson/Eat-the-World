@@ -8,7 +8,7 @@ Dishes can be added or removed from the users favorites, with each dish info pag
 
 Made mobile first, as a pwa.
 
-<img width="436" alt="image" src="https://user-images.githubusercontent.com/83961538/139870623-aa291978-03d5-43ac-8119-1b5865eae562.png">
+<img width="762" alt="image" src="https://user-images.githubusercontent.com/83961538/139871928-4377e970-ae7d-4f03-bbf5-a40ead785dca.png">
 
 
 To run the project :
