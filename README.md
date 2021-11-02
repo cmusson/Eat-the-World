@@ -8,6 +8,9 @@ Dishes can be added or removed from the users favorites, with each dish info pag
 
 Made mobile first, as a pwa.
 
+<img width="436" alt="image" src="https://user-images.githubusercontent.com/83961538/139870623-aa291978-03d5-43ac-8119-1b5865eae562.png">
+
+
 To run the project :
 
 - Make sure to run npm i in both the client and the server folder to install required dependencies.
