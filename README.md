@@ -10,6 +10,9 @@ Made mobile first, as a pwa.
 
 <img width="762" alt="image" src="https://user-images.githubusercontent.com/83961538/139871928-4377e970-ae7d-4f03-bbf5-a40ead785dca.png">
 
+<img width="762" alt="image" src="https://user-images.githubusercontent.com/83961538/139874047-dec0994a-1943-4083-bd29-386cc673863b.png">
+
+
 
 To run the project :
 
